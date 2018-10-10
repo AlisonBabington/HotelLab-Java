@@ -7,6 +7,7 @@ public class Hotel {
     private ArrayList<Bedroom> bedrooms;
     private ArrayList<ConferenceRoom> conferenceRooms;
     private DiningRoom diningRoom;
+    private ArrayList<Booking> bookings;
 
     public Hotel(String name, int till) {
         this.name = name;
@@ -14,6 +15,7 @@ public class Hotel {
         this.bedrooms = new ArrayList<>();
         this.conferenceRooms = new ArrayList<>();
         this.diningRoom = new DiningRoom(5);
+        this.bookings = new ArrayList<>();
     }
 
     public int bedroomsCount() {
@@ -67,5 +69,30 @@ public class Hotel {
 
     public Guest checkOutGuestDiningRoom() {
         return diningRoom.removeDiner();
+    }
+
+    public int bookingCount() {
+        return bookings.size();
+    }
+
+    public int bookRoom(int nights, Bedroom bedroom) {
+        int bedroomIndex = bedrooms.indexOf(bedroom);
+        Bedroom thisBedroom = bedrooms.get(bedroomIndex);
+        Booking thisBooking = new Booking(nights, thisBedroom);
+        bookings.add(thisBooking);
+        return chargeRoom(thisBooking);
+    }
+
+    private int chargeRoom(Booking thisBooking) {
+        Bedroom bedroom = thisBooking.getRoom();
+        int nights = thisBooking.getNights();
+        return bedroom.getNightRate() * nights;
+    }
+
+    public int emptyBedroomsCount() {
+        ArrayList<Bedroom> emptyBedrooms = new ArrayList<>();
+        System.out.println(bedrooms);
+        bedrooms.forEach(bedroom -> { if (bedroom.getStatus() == "Empty") emptyBedrooms.add(bedroom);});
+        return emptyBedrooms.size();
     }
 }
