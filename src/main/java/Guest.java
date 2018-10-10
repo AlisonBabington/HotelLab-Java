@@ -15,4 +15,8 @@ public class Guest {
     public int getMoney() {
         return wallet;
     }
+
+    public void getMeal(int price) {
+        wallet -= price;
+    }
 }

@@ -21,4 +21,10 @@ public class GuestTest {
     public void getMoney() {
         assertEquals(500, guest.getMoney());
     }
+
+    @Test
+    public void getMeal() {
+        guest.getMeal(5);
+        assertEquals(495, guest.getMoney());
+    }
 }

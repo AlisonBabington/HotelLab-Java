@@ -28,4 +28,23 @@ public class DiningRoomTest {
         diningRoom.removeDiner();
         assertEquals(2, diningRoom.guestCount());
     }
+
+    @Test
+    public void canAddToMenu() {
+        diningRoom.addDish("Burger", 5);
+        assertEquals(1, diningRoom.menuCount());
+    }
+
+    @Test
+    public void getPriceByKey(){
+        diningRoom.addDish("Burger", 5);
+        assertEquals(5, diningRoom.getPrice("Burger"));
+    }
+
+    @Test
+    public void giveMealToGuest() {
+        diningRoom.addDish("Burger", 5);
+        diningRoom.guestMeal("Burger", guest);
+        assertEquals(1995, guest.getMoney());
+    }
 }

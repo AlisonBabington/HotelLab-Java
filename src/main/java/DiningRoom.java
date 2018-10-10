@@ -24,4 +24,21 @@ public class DiningRoom {
     public Guest removeDiner() {
         return currentDiners.remove(0);
     }
+
+    public int menuCount() {
+        return menu.size();
+    }
+
+    public void addDish(String dish, int price) {
+        menu.put(dish, price);
+    }
+
+    public int getPrice(String dish) {
+        return menu.get(dish);
+    }
+
+    public void guestMeal(String dish, Guest guest) {
+        int price = getPrice(dish);
+        guest.getMeal(price);
+    }
 }
