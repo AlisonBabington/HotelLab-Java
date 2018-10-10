@@ -1,4 +1,6 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Hotel {
 
@@ -75,10 +77,12 @@ public class Hotel {
         return bookings.size();
     }
 
-    public int bookRoom(int nights, Bedroom bedroom) {
+    public int bookRoom(int nights, Bedroom bedroom, Guest guest) {
         int bedroomIndex = bedrooms.indexOf(bedroom);
         Bedroom thisBedroom = bedrooms.get(bedroomIndex);
-        Booking thisBooking = new Booking(nights, thisBedroom);
+        Date thisDate = new Date();
+        System.out.println(thisDate);
+        Booking thisBooking = new Booking(nights, thisBedroom, guest, thisDate);
         bookings.add(thisBooking);
         return chargeRoom(thisBooking);
     }
@@ -91,7 +95,6 @@ public class Hotel {
 
     public int emptyBedroomsCount() {
         ArrayList<Bedroom> emptyBedrooms = new ArrayList<>();
-        System.out.println(bedrooms);
         bedrooms.forEach(bedroom -> { if (bedroom.getStatus() == "Empty") emptyBedrooms.add(bedroom);});
         return emptyBedrooms.size();
     }

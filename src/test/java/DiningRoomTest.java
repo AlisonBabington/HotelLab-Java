@@ -46,5 +46,6 @@ public class DiningRoomTest {
         diningRoom.addDish("Burger", 5);
         diningRoom.guestMeal("Burger", guest);
         assertEquals(1995, guest.getMoney());
+        assertEquals(5, diningRoom.getBalance());
     }
 }

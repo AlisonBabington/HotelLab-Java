@@ -6,11 +6,13 @@ public class DiningRoom {
     private int capacity;
     private ArrayList<Guest> currentDiners;
     private HashMap<String, Integer> menu;
+    private int till;
 
     public DiningRoom(int capacity){
         this.capacity = capacity;
         this.currentDiners = new ArrayList<>();
         this.menu = new HashMap<>();
+        this.till = 0;
     }
 
     public int guestCount() {
@@ -40,5 +42,10 @@ public class DiningRoom {
     public void guestMeal(String dish, Guest guest) {
         int price = getPrice(dish);
         guest.getMeal(price);
+        till += price;
+    }
+
+    public int getBalance() {
+        return till;
     }
 }

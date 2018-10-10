@@ -88,14 +88,14 @@ public class HotelTest {
     @Test
     public void bookRoom() {
         hotel.addBedroom(bedroom);
-        hotel.bookRoom(2, bedroom);
+        hotel.bookRoom(2, bedroom, guest);
         assertEquals(1, hotel.bookingCount());
     }
 
     @Test
     public void bookingBillTotal() {
         hotel.addBedroom(bedroom);
-        assertEquals(200, hotel.bookRoom(2, bedroom));
+        assertEquals(200, hotel.bookRoom(2, bedroom, guest));
     }
 
     @Test
